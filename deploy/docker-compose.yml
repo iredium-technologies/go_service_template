@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  iredium:
+    image: iredium/project/main:${project_version}
+    env_file: ../.env
+    restart: on-failure
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "999k"
+    ports:
+     - 1006:1006
+    networks:
+      - backend
+
+networks:
+  backend:
